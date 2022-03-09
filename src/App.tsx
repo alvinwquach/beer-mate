@@ -1,15 +1,17 @@
 import React from 'react';
-
+import { getFromApi, getBeers } from './beerapi'
+import { useState } from 'react';
+import { TextField, Button } from '@mui/material';
 import './App.css';
 
 function App() {
+  getFromApi().then((beers) => {
+    console.log(beers[0].abv);
+  });
   return (
     <div className="App">
-      <h1>Hello</h1>
-      <h2>Hello</h2>
-      <h3>Hello</h3>
-      <h4>Hello</h4>
-      <h5>Hello</h5>
+      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <Button variant="contained">Submit</Button>
     </div>
   );
 }
