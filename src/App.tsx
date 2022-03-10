@@ -5,14 +5,25 @@ import { getFromApi, getBeers } from './beerapi'
 import './App.css';
 
 function App() {
-  const [beers, setBeers] = useState(getBeers);
-  console.log(getBeers);
+  const [beers, setBeers] = useState("");
+
+
+  // useEffect(() => {
+  //   getBeers
+  // }, [getBeers])
+  
 
   getFromApi().then((beers) => {
-    console.log(beers[0].abv);
-    console.log(beers[10].name);
-    console.log(beers[0].tagline);
-    console.log(beers[0].ibu);
+    // console.log(beers[0].abv);
+    // console.log(beers[10].name);
+    // console.log(beers[0].tagline);
+    // console.log(beers[0].ibu);
+    // console.log(beers[0].method)
+    // console.log(beers[0].method.mash_temp)
+    console.log(beers[0].method.fermentation)
+    console.log(beers[0].method.twist)
+    // console.log(beers[0].method.fermentation.temp);
+
   });
 
   
