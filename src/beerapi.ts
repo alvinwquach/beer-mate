@@ -5,19 +5,18 @@ export const getFromApi = async (): Promise<BeerApi[]> => {
 };
 
 type Method = {
-  mash_temp: MashTemperature;
+  mash_temp: MashTemperature[];
   fermentation: Fermentation;
   twist: null | string;
-}[];
+};
 
 type Fermentation = {
-  fermentation: {};
   temp: Temperature;
 };
 
 type Ingredients = {
-  malt: Malt;
-  hops: Hops;
+  malt: Malt[];
+  hops: Hops[];
   yeast: string;
 };
 
@@ -26,12 +25,12 @@ type Hops = {
   amount: Amount;
   add: string;
   attribute: string;
-}[];
+};
 
 type MashTemperature = {
   temp: Temperature;
   duration: number;
-}[];
+};
 
 type Temperature = {
   value: number;
@@ -51,7 +50,7 @@ type BoilVolume = {
 type Malt = {
   name: string;
   amount: Amount;
-}[];
+};
 
 type Amount = {
   value: number;
@@ -75,11 +74,7 @@ type BeerApi = {
   attenuation_level: number;
   volume: Volume;
   boil_volume: BoilVolume;
-  method: {
-    mash_temp: MashTemperature;
-    fermentation: {};
-    twist: null | string;
-  };
+  method: Method;
   ingredients: Ingredients;
   food_pairing: string[];
   brewers_tips: string;

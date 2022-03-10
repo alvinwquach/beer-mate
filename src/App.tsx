@@ -3,14 +3,17 @@ import { useState, useEffect } from 'react';
 import { TextField, Button } from '@mui/material';
 import { getFromApi, getBeers } from './beerapi'
 import './App.css';
+// type AppProps = {
+//   foo: string;
+// }
 
 function App() {
   const [beers, setBeers] = useState("");
+  // props.foo
 
-
-  // useEffect(() => {
-  //   getBeers
-  // }, [getBeers])
+  useEffect(() => {
+    
+  }, [])
   
 
   getFromApi().then((beers) => {
