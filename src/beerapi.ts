@@ -57,7 +57,7 @@ type Amount = {
   unit: "kilograms" | "grams";
 };
 
-type BeerApi = {
+export type BeerApi = {
   id: number;
   name: string;
   tagline: string;
