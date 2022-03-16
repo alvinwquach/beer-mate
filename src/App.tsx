@@ -12,6 +12,31 @@ function App() {
   // props.foo
   const [beers, setBeers] = useState<BeerApi[]>([]);
 
+  const getPairings = () => {
+    return (
+      <>
+        <ul>
+          <li>Name</li>
+          <li>Tagline</li>
+          <li>Description</li>
+          <li>ABV</li>
+          <li>Food Pairing</li>
+        </ul>
+        {beers.map((beer) => {
+          return (
+            <ul key={beer.id}>
+              <li>{beer.name}</li>
+              <li>{beer.description}</li>
+              <li>{beer.tagline}</li>
+              <li>{beer.abv}</li>
+              <li>{beer.food_pairing}</li>
+            </ul>
+          );
+        })}
+        </>
+    )
+  }
+
   useEffect(() => {
     getFromApi().then((beers) => {
       // console.log(beers[0].abv);
@@ -24,32 +49,8 @@ function App() {
 
   return (
     <div className="App">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Tagline</th>
-            <th>Description</th>
-            <th>ABV</th>
-            <th>Food Pairing</th>
-          </tr>
-        </thead>
-        <tbody>
-          {beers.map((beer) => {
-            return (
-              <tr key={beer.id}>
-                <td>{beer.name}</td>
-                <td>{beer.description}</td>
-                <td>{beer.tagline}</td>
-                <td>{beer.abv}</td>
-                <td>{beer.food_pairing}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <Button variant="contained">Beer, Set, Match</Button>
+      <Button onClick={getPairings} variant="contained">Beer, Set, Match</Button>
     </div>
   );
 }
