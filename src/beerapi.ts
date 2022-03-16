@@ -1,8 +1,14 @@
+import axios from "axios";
+
 export const getFromApi = async (): Promise<BeerApi[]> => {
   return fetch("https://api.punkapi.com/v2/beers").then((response) =>
     response.json()
   );
 };
+
+export const getBeerFromAPIByName = async(beerName: string): Promise<BeerApi[]> => {
+  return await axios.get(`https://api.punkapi.com/v2/beers/?beer_name=${beerName}`);
+} 
 
 type Method = {
   mash_temp: MashTemperature[];

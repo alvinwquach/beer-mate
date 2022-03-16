@@ -1,56 +1,51 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { TextField, Button } from '@mui/material';
-import { getFromApi, BeerApi } from './beerapi'
-import './App.css';
-// type AppProps = {
-//   foo: string;
-// }
+import React from "react";
+import { useState, useEffect } from "react";
+import { TextField, Button } from "@mui/material";
+import { getFromApi, getBeerFromAPIByName, BeerApi } from "./beerapi";
+import { useForm } from "react-hook-form";
+import BeerInformation from "./components/BeerInformation";
+import "./App.css";
 
 function App() {
-  // const [beers, setBeers] = useState("");
-  // props.foo
-  const [beers, setBeers] = useState<BeerApi[]>([]);
+  const [userSelection, setUserSelection] = useState({});
 
-  const getPairings = () => {
-    return (
-      <>
-        <ul>
-          <li>Name</li>
-          <li>Tagline</li>
-          <li>Description</li>
-          <li>ABV</li>
-          <li>Food Pairing</li>
-        </ul>
-        {beers.map((beer) => {
-          return (
-            <ul key={beer.id}>
-              <li>{beer.name}</li>
-              <li>{beer.description}</li>
-              <li>{beer.tagline}</li>
-              <li>{beer.abv}</li>
-              <li>{beer.food_pairing}</li>
-            </ul>
-          );
-        })}
-        </>
-    )
-  }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      userInput: "",
+    },
+  });
+
+  const onSubmit = async (data: any) => {
+    let res: any = await getBeerFromAPIByName(data.userInput);
+    setUserSelection(res.data[0]);
+  };
 
   useEffect(() => {
-    getFromApi().then((beers) => {
-      // console.log(beers[0].abv);
-      // console.log(beers[10].name);
-      // console.log(beers[0].tagline);
-      // console.log(beers[0].ibu);
-      setBeers(beers);
-    });
-  }, [])
+
+  }, []);
 
   return (
     <div className="App">
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <Button onClick={getPairings} variant="contained">Beer, Set, Match</Button>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <TextField
+          id="outlined-basic"
+          label="Outlined"
+          variant="outlined"
+          {...register("userInput")}
+        />
+        <Button variant="contained" type="submit">
+          Beer, Set, Match
+        </Button>
+      </form>
+      {userSelection ?
+         <BeerInformation userSelection={userSelection}/>
+         :
+         <p>Sorry, no beer for you!</p>
+      }
     </div>
   );
 }
