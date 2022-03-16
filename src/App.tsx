@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
-import { getFromApi, getBeerFromAPIByName, BeerApi } from "./beerapi";
+import { getBeerFromAPIByName } from "./beerapi";
 import { useForm } from "react-hook-form";
 import BeerInformation from "./components/BeerInformation";
 import "./App.css";
