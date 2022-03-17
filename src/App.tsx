@@ -7,21 +7,20 @@ import BeerInformation from "./components/BeerInformation";
 import "./App.css";
 
 function App() {
-  const [userSelection, setUserSelection] = useState({});
+  const [beerFromApi, setBeerFromApi] = useState({});
 
   const {
     register,
     handleSubmit,
-    formState: {},
   } = useForm({
     defaultValues: {
-      userInput: "",
+      userInput: "Buzz",
     },
   });
 
   const onSubmit = async (data: any) => {
-    let res: any = await getBeerFromAPIByName(data.userInput);
-    setUserSelection(res.data[0]);
+    const beerList = await getBeerFromAPIByName(data.userInput);
+    setBeerFromApi(beerList[0]);
   };
 
   useEffect(() => {
@@ -41,8 +40,8 @@ function App() {
           Beer, Set, Match
         </Button>
       </form>
-      {userSelection ?
-         <BeerInformation userSelection={userSelection}/>
+      {beerFromApi ?
+         <BeerInformation userSelection={beerFromApi}/>
          :
          <p>Sorry, no beer for you!</p>
       }
