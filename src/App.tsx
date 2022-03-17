@@ -12,7 +12,7 @@ function App() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {},
   } = useForm({
     defaultValues: {
       userInput: "",
