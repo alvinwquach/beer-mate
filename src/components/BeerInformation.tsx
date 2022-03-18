@@ -7,7 +7,7 @@ const BeerInformation = ({ userSelection }: any) => {
         <h2>Here are a few recommendations!</h2>
         <p>{JSON.stringify(userSelection.food_pairing)}</p>
         <p>{userSelection.name}</p>
-        <p>{userSelection.abv} %</p>
+        <p>{userSelection.abv}</p>
         <img src={userSelection.image_url} alt="" />
       </div>
     </>
