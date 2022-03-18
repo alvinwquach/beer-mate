@@ -24,14 +24,14 @@ function App() {
   const onSubmit = async (data: FormValues) => {
     const beerList = await getBeerFromAPIByName(data.userInput);
     setBeerFromApi(beerList[0]);
-    console.log(beerList[0]);
-    console.log(beerList[0].food_pairing[0]);
   };
 
   const handleClick = () => resetField("userInput");
 
   return (
     <div className="App">
+      <h1>Welcome to Brewmate!</h1>
+      <p>Type in your beer to find what to enjoy it with!</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
           id="outlined-basic"
