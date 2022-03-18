@@ -1,50 +1,56 @@
-import React from "react";
-import { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
-import { getBeerFromAPIByName } from "./beerapi";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+
+import { getBeerFromAPIByName } from "./beerapi";
 import BeerInformation from "./components/BeerInformation";
 import "./App.css";
+
+type FormValues = {
+  userInput: string;
+};
 
 function App() {
   const [beerFromApi, setBeerFromApi] = useState({});
 
-  const {
-    register,
-    handleSubmit,
-  } = useForm({
+  //destructured react hook form to handle userInput & to reset the text field
+  const { register, resetField, handleSubmit } = useForm({
     defaultValues: {
-      userInput: "Buzz",
+      userInput: "",
     },
   });
 
-  const onSubmit = async (data: any) => {
+  // created event handler to retrieve beer that matches userInput
+  const onSubmit = async (data: FormValues) => {
     const beerList = await getBeerFromAPIByName(data.userInput);
     setBeerFromApi(beerList[0]);
+    console.log(beerList[0]);
+    console.log(beerList[0].food_pairing[0]);
   };
 
-  useEffect(() => {
-
-  }, []);
+  const handleClick = () => resetField("userInput");
 
   return (
     <div className="App">
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
           id="outlined-basic"
-          label="Outlined"
+          // label="Outlined"
           variant="outlined"
           {...register("userInput")}
         />
         <Button variant="contained" type="submit">
-          Beer, Set, Match
+          Brew... Mate!
+        </Button>
+        <Button variant="contained" onClick={handleClick}>
+          Reset
         </Button>
       </form>
-      {beerFromApi ?
-         <BeerInformation userSelection={beerFromApi}/>
-         :
-         <p>Sorry, no beer for you!</p>
-      }
+      {beerFromApi ? (
+        <BeerInformation userSelection={beerFromApi} />
+      ) : (
+        <p>Sorry, no beer for you!</p>
+      )}
     </div>
   );
 }
