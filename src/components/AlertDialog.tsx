@@ -6,37 +6,45 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { BeerApi } from "../beerapi";
 
-export default function AlertDialog() {
-  const [open, setOpen] = useState(false);
+type AlertDialogProps = {
+  beer: BeerApi;
+  open: boolean;
+  thanks: () => void;
+};
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+export default function AlertDialog({ beer, open, thanks }: AlertDialogProps) {
+  // const [open, setOpen] = useState(false);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
+
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
         Learn More!
-      </Button>
+      </Button> */}
       <Dialog
         open={open}
-        onClose={handleClose}
+        // onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">{""}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            This beer was made with...
+            <p>{beer.description}</p>
+            <p>{beer.tagline}</p>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} autoFocus>
+          <Button onClick={thanks} autoFocus>
             Thanks!
           </Button>
         </DialogActions>
