@@ -14,24 +14,10 @@ type AlertDialogProps = {
 };
 
 export default function AlertDialog({ beer, open, thanks }: AlertDialogProps) {
-  // const [open, setOpen] = useState(false);
-
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
   return (
     <div>
-      {/* <Button variant="outlined" onClick={handleClickOpen}>
-        Learn More!
-      </Button> */}
       <Dialog
         open={open}
-        // onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >

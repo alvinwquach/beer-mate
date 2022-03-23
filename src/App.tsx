@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { BeerApi, getBeerFromAPIByName } from "./beerapi";
 import BeerInformation from "./components/BeerInformation";
+import GraphQL from "./components/GraphQL";
 import "./App.css";
 
 type FormValues = {
@@ -46,7 +47,6 @@ function App() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <TextField
             id="outlined-basic"
-            // label="Outlined"
             variant="outlined"
             placeholder="Brewmate"
             {...register("userInput")}
@@ -54,6 +54,7 @@ function App() {
           <Button variant="contained" type="submit">
             Brew... Mate!
           </Button>
+          <GraphQL />
           <Button variant="contained" color="error" onClick={handleClick}>
             Reset
           </Button>
