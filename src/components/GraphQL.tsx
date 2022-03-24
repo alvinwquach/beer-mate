@@ -1,26 +1,19 @@
-import { gql, useQuery } from "@apollo/client";
+import { ApolloClient, gql, InMemoryCache } from "@apollo/client/core";
+import { useQuery } from "@apollo/client";
+import { SchemaLink } from "@apollo/client/link/schema";
+import { makeExecutableSchema } from "@graphql-tools/schema";
 
 const query = gql`
-  query GetLoco {
-    locomoco {
-      repos
-    }
-  }
+query GetBeer {
+    
+}
 `;
 
 export default function GraphQL() {
-  const { data, error, loading } = useQuery(query);
-  if (loading) {
-    return <p>Loading</p>;
-  }
-  if (error) {
-    return <p>Error</p>;
-  }
+  const { data } = useQuery(query);
 
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+    <div className="Graphql">
       <pre>{JSON.stringify(data)}</pre>
     </div>
   );
