@@ -5,7 +5,9 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 
 const query = gql`
 query GetBeer {
-    
+    beer {
+        
+    }
 }
 `;
 
