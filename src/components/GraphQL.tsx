@@ -4,20 +4,27 @@ const query = gql`
   query GetBeerName {
     getbeer {
       name
-    }
-  }
-`;
-
-const query2 = gql`
-  query GetFoodPairing {
-    getbeer {
+      tagline
+      first_brewed
+      description
+      image_url
+      abv
+      ibu
+      target_fg
+      target_og
+      ebc
+      srm
+      attenuation_level
       food_pairing
+      brewers_tips
+      contributed_by
     }
   }
 `;
 
 export function GraphQL() {
-  const { data } = useQuery(query2);
+  // useQuery to query api data
+  const { data } = useQuery(query);
 
   return (
     <div className="Graphql">
