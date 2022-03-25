@@ -1,7 +1,4 @@
-import { ApolloClient, gql, InMemoryCache } from "@apollo/client/core";
-import { useQuery } from "@apollo/client";
-import { SchemaLink } from "@apollo/client/link/schema";
-import { makeExecutableSchema } from "@graphql-tools/schema";
+import { gql, useQuery } from "@apollo/client";
 
 const query = gql`
   query GetBeer {

@@ -1,4 +1,5 @@
 import { makeExecutableSchema } from "@graphql-tools/schema";
+import { getFromApi } from "./beerapi";
 
 const typeDefs = `
 type Beer {
@@ -13,13 +14,14 @@ type Query {
 
 const resolvers = {
   Query: {
-    beer: () => {
-      return { name: "Pliny" };
+    beer: async () => {
+      const beers = await getFromApi();
+      return beers[0];
     },
   },
 };
 
-const schema = makeExecutableSchema({
+export const schema = makeExecutableSchema({
   typeDefs,
   resolvers,
 });
