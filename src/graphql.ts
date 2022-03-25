@@ -18,6 +18,7 @@ const resolvers = {
       const beers = await getFromApi();
       return beers[0];
     },
+    beers: () => {},
   },
 };
 
