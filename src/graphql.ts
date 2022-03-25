@@ -1,27 +1,29 @@
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { getFromApi } from "./beerapi";
 
+// schema
 const typeDefs = `
 type Beer {
   name: String!
+  food_pairing: [String!]
 }
 
-
 type Query {
-    beer: Beer
+    getbeer: Beer
 }
 `;
 
+// apis
 const resolvers = {
   Query: {
-    beer: async () => {
+    getbeer: async () => {
       const beers = await getFromApi();
       return beers[0];
     },
-    beers: () => {},
   },
 };
 
+// server
 export const schema = makeExecutableSchema({
   typeDefs,
   resolvers,
