@@ -1,6 +1,7 @@
 import { TextField, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { GraphQL } from "./components/GraphQL";
 import { BeerApi, getBeerFromAPIByName } from "./beerapi";
 import BeerInformation from "./components/BeerInformation";
 import "./App.css";
@@ -31,6 +32,7 @@ function App() {
 
   return (
     <div className="App">
+      <GraphQL />
       <h1>Welcome to Brewmate!</h1>
       <p>
         Type in your beer to find what to enjoy it with! Please note: Not all

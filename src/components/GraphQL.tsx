@@ -4,19 +4,19 @@ import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 
 const query = gql`
-query GetBeer {
+  query GetBeer {
     beer {
-        
+      name
     }
-}
+  }
 `;
 
-export default function GraphQL() {
+export function GraphQL() {
   const { data } = useQuery(query);
 
   return (
     <div className="Graphql">
-      <pre>{JSON.stringify(data)}</pre>
+      <pre>{JSON.stringify(data, null, 4)}</pre>
     </div>
   );
 }
