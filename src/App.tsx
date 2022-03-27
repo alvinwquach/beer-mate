@@ -62,12 +62,19 @@ function App() {
               placeholder="Brewmate"
               {...register("userInput")}
             />
-            <Button variant="contained" type="submit">
-              Brew... Mate!
-            </Button>
-            <Button variant="contained" color="error" onClick={handleClick}>
-              Reset
-            </Button>
+            <div
+              style={{
+                display: "grid",
+                gridArea: "revert",
+              }}
+            >
+              <Button variant="contained" type="submit">
+                Brew... Mate!
+              </Button>
+              <Button variant="contained" color="error" onClick={handleClick}>
+                Reset
+              </Button>
+            </div>
           </form>
 
           {/* verifies to see if the beer from API exists, if not show error msg */}
