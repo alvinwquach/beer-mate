@@ -1,8 +1,10 @@
+// creating API call
 export const getFromApi = async (): Promise<BeerApi[]> => {
   const response = await fetch("https://api.punkapi.com/v2/beers");
   return response.json();
 };
 
+//creating api call to grab beer by name
 export const getBeerFromAPIByName = async (
   beerName: string
 ): Promise<BeerApi[]> => {
@@ -12,6 +14,7 @@ export const getBeerFromAPIByName = async (
   return response.json();
 };
 
+// creating nested types for ts
 type Method = {
   mash_temp: MashTemperature[];
   fermentation: Fermentation;
@@ -65,6 +68,7 @@ type Amount = {
   unit: "kilograms" | "grams";
 };
 
+// creating types for ts
 export type BeerApi = {
   id: number;
   name: string;

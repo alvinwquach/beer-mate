@@ -15,6 +15,8 @@ const query = gql`
       ebc
       srm
       attenuation_level
+      volume
+      boil_volume
       food_pairing
       brewers_tips
       contributed_by

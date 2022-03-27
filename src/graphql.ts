@@ -16,9 +16,21 @@ type Beer {
   ebc: Float!
   srm: Int!
   attenuation_level: Float!
+  volume: Volume!
+  boil_volume: BoilVolume
   food_pairing: [String!]
   brewers_tips: String!
   contributed_by: String!
+}
+
+type Volume {
+  value: Int!
+  unit: String!
+}
+
+type BoilVolume {
+  value: Int!
+  unit: String!
 }
 
 type Query {
