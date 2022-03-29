@@ -4,6 +4,7 @@ import { getFromApi } from "./beerapi";
 // schema
 const typeDefs = `
 type Beer {
+  id: Int!
   name: String!
   tagline: String!
   first_brewed: String!
@@ -15,9 +16,12 @@ type Beer {
   target_og: Int!
   ebc: Float!
   srm: Int!
+  ph: Float!
   attenuation_level: Float!
-  volume: Volume!
+  volume: Volume
   boil_volume: BoilVolume
+  method: Method
+  ingredients: Ingredients
   food_pairing: [String!]
   brewers_tips: String!
   contributed_by: String!
@@ -30,6 +34,49 @@ type Volume {
 
 type BoilVolume {
   value: Int!
+  unit: String!
+}
+
+type Method {
+  mash_Temp: [MashTemperature!]
+  fermentation: Fermentation
+  twist: String
+}
+
+type Fermentation {
+  temp: Temperature
+}
+
+type MashTemperature {
+  temp: Temperature
+  duration: Int!
+}
+
+type Temperature {
+  value: Int!
+  unit: String!
+}
+
+type Ingredients {
+  malt: [Malt!]
+  hops: [Hops!]
+  yeast: String!
+}
+
+type Malt {
+  name: String!
+  amount: Amount
+}
+
+type Hops {
+  name: String!
+  amount: Amount
+  add: String!
+  attribute: String!
+}
+
+type Amount {
+  value: Float!
   unit: String!
 }
 
