@@ -1,8 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
 
 const query = gql`
-  query GetBeerName {
-    getbeer {
+  query GetBeerName($beername: String!) {
+    getbeerbyname(name: $beername) {
       id
       name
       tagline
@@ -68,7 +68,8 @@ const query = gql`
 
 export function GraphQL() {
   // useQuery to query api data
-  const { data } = useQuery(query);
+  // add variables as an argument to useQuery
+  const { data } = useQuery(query, { variables: { beername: "Buzz" } });
 
   return (
     <div className="Graphql">

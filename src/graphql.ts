@@ -1,5 +1,6 @@
+import { Resolvers } from "@apollo/client";
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import { getFromApi } from "./beerapi";
+import { getBeerFromAPIByName, getFromApi } from "./beerapi";
 
 // schema
 const typeDefs = `
@@ -82,14 +83,21 @@ type Amount {
 
 type Query {
     getbeer: Beer
+    getbeerbyname(name: String!): Beer
 }
 `;
 
 // apis
-const resolvers = {
+
+// interface from Apollo for resolvers
+const resolvers: Resolvers = {
   Query: {
     getbeer: async () => {
       const beers = await getFromApi();
+      return beers[0];
+    },
+    getbeerbyname: async (root, args) => {
+      const beers = await getBeerFromAPIByName(args.name);
       return beers[0];
     },
   },
