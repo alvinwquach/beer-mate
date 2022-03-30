@@ -2,12 +2,17 @@ import React from "react";
 import { useState } from "react";
 import { BeerApi } from "../beerapi";
 import AlertDialog from "./AlertDialog";
+import { useGetBeerNameQuery } from "../generated/graphql";
 
 type BeerInformationProps = {
   beer: BeerApi;
 };
 
 const BeerInformation = ({ beer }: BeerInformationProps) => {
+  const { data, loading, error } = useGetBeerNameQuery({
+    variables: { beername: beer.name },
+  });
+
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {

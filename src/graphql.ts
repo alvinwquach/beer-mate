@@ -39,7 +39,7 @@ type BoilVolume {
 }
 
 type Method {
-  mash_Temp: [MashTemperature!]
+  mash_temp: [MashTemperature!]
   fermentation: Fermentation
   twist: String
 }
