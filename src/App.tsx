@@ -18,6 +18,7 @@ const client = new ApolloClient({
 });
 
 function App() {
+
   const [beerName, setBeerName] = useState("");
   const [submitted, setSubmitted] = useState(false);
 

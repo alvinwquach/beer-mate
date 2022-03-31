@@ -29,20 +29,20 @@ export type Beer = {
   brewers_tips: Scalars['String'];
   contributed_by: Scalars['String'];
   description: Scalars['String'];
-  ebc: Scalars['Float'];
+  ebc?: Maybe<Scalars['Float']>;
   first_brewed: Scalars['String'];
   food_pairing: Array<Scalars['String']>;
-  ibu: Scalars['Int'];
+  ibu: Scalars['Float'];
   id: Scalars['Int'];
   image_url: Scalars['String'];
   ingredients?: Maybe<Ingredients>;
   method?: Maybe<Method>;
   name: Scalars['String'];
   ph: Scalars['Float'];
-  srm: Scalars['Int'];
+  srm?: Maybe<Scalars['Float']>;
   tagline: Scalars['String'];
   target_fg: Scalars['Int'];
-  target_og: Scalars['Int'];
+  target_og: Scalars['Float'];
   volume?: Maybe<Volume>;
 };
 
@@ -67,8 +67,8 @@ export type Hops = {
 
 export type Ingredients = {
   __typename?: 'Ingredients';
-  hops?: Maybe<Array<Hops>>;
-  malt?: Maybe<Array<Malt>>;
+  hops: Array<Hops>;
+  malt: Array<Malt>;
   yeast: Scalars['String'];
 };
 
@@ -87,7 +87,7 @@ export type MashTemperature = {
 export type Method = {
   __typename?: 'Method';
   fermentation?: Maybe<Fermentation>;
-  mash_temp?: Maybe<Array<MashTemperature>>;
+  mash_temp: Array<MashTemperature>;
   twist?: Maybe<Scalars['String']>;
 };
 
@@ -114,19 +114,19 @@ export type Volume = {
   value: Scalars['Int'];
 };
 
-export type BeerFragmentFragment = { __typename?: 'Beer', id: number, name: string, tagline: string, first_brewed: string, description: string, image_url: string, abv: number, ibu: number, target_fg: number, target_og: number, ebc: number, srm: number, ph: number, attenuation_level: number, food_pairing: Array<string>, brewers_tips: string, contributed_by: string, volume?: { __typename?: 'Volume', value: number, unit: string } | null, boil_volume?: { __typename?: 'BoilVolume', value: number, unit: string } | null, method?: { __typename?: 'Method', twist?: string | null, mash_temp?: Array<{ __typename?: 'MashTemperature', temp?: { __typename?: 'Temperature', value: number, unit: string } | null }> | null, fermentation?: { __typename?: 'Fermentation', temp?: { __typename?: 'Temperature', value: number, unit: string } | null } | null } | null, ingredients?: { __typename?: 'Ingredients', yeast: string, malt?: Array<{ __typename?: 'Malt', name: string, amount?: { __typename?: 'Amount', value: number, unit: string } | null }> | null, hops?: Array<{ __typename?: 'Hops', name: string, add: string, attribute: string, amount?: { __typename?: 'Amount', value: number, unit: string } | null }> | null } | null };
+export type BeerFragmentFragment = { __typename?: 'Beer', id: number, name: string, tagline: string, first_brewed: string, description: string, image_url: string, abv: number, ibu: number, target_fg: number, target_og: number, ebc?: number | null, srm?: number | null, ph: number, attenuation_level: number, food_pairing: Array<string>, brewers_tips: string, contributed_by: string, volume?: { __typename?: 'Volume', value: number, unit: string } | null, boil_volume?: { __typename?: 'BoilVolume', value: number, unit: string } | null, method?: { __typename?: 'Method', twist?: string | null, mash_temp: Array<{ __typename?: 'MashTemperature', temp?: { __typename?: 'Temperature', value: number, unit: string } | null }>, fermentation?: { __typename?: 'Fermentation', temp?: { __typename?: 'Temperature', value: number, unit: string } | null } | null } | null, ingredients?: { __typename?: 'Ingredients', yeast: string, malt: Array<{ __typename?: 'Malt', name: string, amount?: { __typename?: 'Amount', value: number, unit: string } | null }>, hops: Array<{ __typename?: 'Hops', name: string, add: string, attribute: string, amount?: { __typename?: 'Amount', value: number, unit: string } | null }> } | null };
 
 export type GetBeerNameQueryVariables = Exact<{
   beername: Scalars['String'];
 }>;
 
 
-export type GetBeerNameQuery = { __typename?: 'Query', getbeerbyname?: { __typename?: 'Beer', id: number, name: string, tagline: string, first_brewed: string, description: string, image_url: string, abv: number, ibu: number, target_fg: number, target_og: number, ebc: number, srm: number, ph: number, attenuation_level: number, food_pairing: Array<string>, brewers_tips: string, contributed_by: string, volume?: { __typename?: 'Volume', value: number, unit: string } | null, boil_volume?: { __typename?: 'BoilVolume', value: number, unit: string } | null, method?: { __typename?: 'Method', twist?: string | null, mash_temp?: Array<{ __typename?: 'MashTemperature', temp?: { __typename?: 'Temperature', value: number, unit: string } | null }> | null, fermentation?: { __typename?: 'Fermentation', temp?: { __typename?: 'Temperature', value: number, unit: string } | null } | null } | null, ingredients?: { __typename?: 'Ingredients', yeast: string, malt?: Array<{ __typename?: 'Malt', name: string, amount?: { __typename?: 'Amount', value: number, unit: string } | null }> | null, hops?: Array<{ __typename?: 'Hops', name: string, add: string, attribute: string, amount?: { __typename?: 'Amount', value: number, unit: string } | null }> | null } | null } | null };
+export type GetBeerNameQuery = { __typename?: 'Query', getbeerbyname?: { __typename?: 'Beer', id: number, name: string, tagline: string, first_brewed: string, description: string, image_url: string, abv: number, ibu: number, target_fg: number, target_og: number, ebc?: number | null, srm?: number | null, ph: number, attenuation_level: number, food_pairing: Array<string>, brewers_tips: string, contributed_by: string, volume?: { __typename?: 'Volume', value: number, unit: string } | null, boil_volume?: { __typename?: 'BoilVolume', value: number, unit: string } | null, method?: { __typename?: 'Method', twist?: string | null, mash_temp: Array<{ __typename?: 'MashTemperature', temp?: { __typename?: 'Temperature', value: number, unit: string } | null }>, fermentation?: { __typename?: 'Fermentation', temp?: { __typename?: 'Temperature', value: number, unit: string } | null } | null } | null, ingredients?: { __typename?: 'Ingredients', yeast: string, malt: Array<{ __typename?: 'Malt', name: string, amount?: { __typename?: 'Amount', value: number, unit: string } | null }>, hops: Array<{ __typename?: 'Hops', name: string, add: string, attribute: string, amount?: { __typename?: 'Amount', value: number, unit: string } | null }> } | null } | null };
 
 export type GetAllBeersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllBeersQuery = { __typename?: 'Query', getbeer?: { __typename?: 'Beer', id: number, name: string, tagline: string, first_brewed: string, description: string, image_url: string, abv: number, ibu: number, target_fg: number, target_og: number, ebc: number, srm: number, ph: number, attenuation_level: number, food_pairing: Array<string>, brewers_tips: string, contributed_by: string, volume?: { __typename?: 'Volume', value: number, unit: string } | null, boil_volume?: { __typename?: 'BoilVolume', value: number, unit: string } | null, method?: { __typename?: 'Method', twist?: string | null, mash_temp?: Array<{ __typename?: 'MashTemperature', temp?: { __typename?: 'Temperature', value: number, unit: string } | null }> | null, fermentation?: { __typename?: 'Fermentation', temp?: { __typename?: 'Temperature', value: number, unit: string } | null } | null } | null, ingredients?: { __typename?: 'Ingredients', yeast: string, malt?: Array<{ __typename?: 'Malt', name: string, amount?: { __typename?: 'Amount', value: number, unit: string } | null }> | null, hops?: Array<{ __typename?: 'Hops', name: string, add: string, attribute: string, amount?: { __typename?: 'Amount', value: number, unit: string } | null }> | null } | null } | null };
+export type GetAllBeersQuery = { __typename?: 'Query', getbeer?: { __typename?: 'Beer', id: number, name: string, tagline: string, first_brewed: string, description: string, image_url: string, abv: number, ibu: number, target_fg: number, target_og: number, ebc?: number | null, srm?: number | null, ph: number, attenuation_level: number, food_pairing: Array<string>, brewers_tips: string, contributed_by: string, volume?: { __typename?: 'Volume', value: number, unit: string } | null, boil_volume?: { __typename?: 'BoilVolume', value: number, unit: string } | null, method?: { __typename?: 'Method', twist?: string | null, mash_temp: Array<{ __typename?: 'MashTemperature', temp?: { __typename?: 'Temperature', value: number, unit: string } | null }>, fermentation?: { __typename?: 'Fermentation', temp?: { __typename?: 'Temperature', value: number, unit: string } | null } | null } | null, ingredients?: { __typename?: 'Ingredients', yeast: string, malt: Array<{ __typename?: 'Malt', name: string, amount?: { __typename?: 'Amount', value: number, unit: string } | null }>, hops: Array<{ __typename?: 'Hops', name: string, add: string, attribute: string, amount?: { __typename?: 'Amount', value: number, unit: string } | null }> } | null } | null };
 
 export const BeerFragmentFragmentDoc = gql`
     fragment beerFragment on Beer {

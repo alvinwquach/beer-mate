@@ -4,13 +4,13 @@ type Beer {
   tagline: String!
   first_brewed: String!
   description: String!
-  image_url: String!
+  image_url: String
   abv: Float!
-  ibu: Int!
+  ibu: Float!
   target_fg: Int!
-  target_og: Int!
-  ebc: Float!
-  srm: Int!
+  target_og: Float!
+  ebc: Float
+  srm: Float
   ph: Float!
   attenuation_level: Float!
   volume: Volume
@@ -44,7 +44,7 @@ type Fermentation {
 
 type MashTemperature {
   temp: Temperature
-  duration: Int!
+  duration: Int
 }
 
 type Temperature {

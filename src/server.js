@@ -15,20 +15,20 @@ type Beer {
   tagline: String!
   first_brewed: String!
   description: String!
-  image_url: String!
+  image_url: String
   abv: Float!
-  ibu: Int!
+  ibu: Float!
   target_fg: Int!
-  target_og: Int!
-  ebc: Float!
-  srm: Int!
+  target_og: Float!
+  ebc: Float
+  srm: Float
   ph: Float!
   attenuation_level: Float!
   volume: Volume
   boil_volume: BoilVolume
   method: Method
   ingredients: Ingredients
-  food_pairing: [String!]
+  food_pairing: [String!]!
   brewers_tips: String!
   contributed_by: String!
 }
@@ -44,7 +44,7 @@ type BoilVolume {
 }
 
 type Method {
-  mash_Temp: [MashTemperature!]
+  mash_temp: [MashTemperature!]!
   fermentation: Fermentation
   twist: String
 }
@@ -55,7 +55,7 @@ type Fermentation {
 
 type MashTemperature {
   temp: Temperature
-  duration: Int!
+  duration: Int
 }
 
 type Temperature {
@@ -64,8 +64,8 @@ type Temperature {
 }
 
 type Ingredients {
-  malt: [Malt!]
-  hops: [Hops!]
+  malt: [Malt!]!
+  hops: [Hops!]!
   yeast: String!
 }
 
@@ -87,8 +87,8 @@ type Amount {
 }
 
 type Query {
-    getbeer: Beer
-    getbeerbyname(name: String!): Beer
+  getbeer: Beer
+  getbeerbyname(name: String!): Beer
 }
 `;
 
