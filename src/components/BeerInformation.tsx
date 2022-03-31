@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { BeerApi } from "../beerapi";
 import AlertDialog from "./AlertDialog";
-// import { useGetBeerNameQuery } from "../generated/graphql";
 
 type BeerInformationProps = {
   beer: BeerApi;
