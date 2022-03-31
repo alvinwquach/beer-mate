@@ -4,11 +4,11 @@ import { schema } from "./graphql";
 import { TextField, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { GraphQL } from "./components/GraphQL";
 import { BeerApi, getBeerFromAPIByName } from "./beerapi";
 import BeerInformation from "./components/BeerInformation";
 import "./App.css";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import BeerFetcher from "./components/BeerFetcher";
 type FormValues = {
   userInput: string;
 };
@@ -21,6 +21,7 @@ const client = new ApolloClient({
 
 function App() {
   const [beerFromApi, setBeerFromApi] = useState<BeerApi>();
+  const [beerName, setBeerName] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   //destructured react hook form to handle userInput & to reset the text field
@@ -32,9 +33,10 @@ function App() {
 
   // created event handler to retrieve beer that matches userInput
   const onSubmit = async (data: FormValues) => {
-    const beerList = await getBeerFromAPIByName(data.userInput);
-    setBeerFromApi(beerList[0]);
-    setSubmitted(true);
+    // const beerList = await getBeerFromAPIByName(data.userInput);
+    // setBeerFromApi(beerList[0]);
+    // setSubmitted(true);
+    setBeerName(data.userInput);
   };
 
   const handleClick = () => resetField("userInput");
@@ -42,7 +44,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <GraphQL />
+        {beerName ? <BeerFetcher beername={beerName} /> : null}
         <h1>Welcome to Brewmate!</h1>
         <p>
           Type in your beer to find what to enjoy it with! Please note: Not all

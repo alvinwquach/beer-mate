@@ -9,10 +9,6 @@ type BeerInformationProps = {
 };
 
 const BeerInformation = ({ beer }: BeerInformationProps) => {
-  const { data, loading, error } = useGetBeerNameQuery({
-    variables: { beername: beer.name },
-  });
-
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -33,8 +29,8 @@ const BeerInformation = ({ beer }: BeerInformationProps) => {
             return <li className="foodItem">{fooditem}</li>;
           })}
         </ul>
-        <p>{beer.name}</p>
-        <p>{beer.abv}</p>
+        <p>Name: {beer.name}</p>
+        <p>ABV: {beer.abv}</p>
         <img onClick={handleClickOpen} src={beer.image_url} alt="" />
         <AlertDialog open={open} thanks={close} beer={beer} />
       </div>
