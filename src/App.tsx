@@ -4,7 +4,6 @@ import { schema } from "./graphql";
 import { TextField, Button } from "@mui/material";
 
 import RotateLeftIcon from "@mui/icons-material/RotateLeft";
-import SearchIcon from "@mui/icons-material/Search";
 
 import { useForm } from "react-hook-form";
 import { useState } from "react";
@@ -48,7 +47,7 @@ function App() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               style={{
-                width: "67%",
+                width: "70%",
               }}
               id="outlined-basic"
               variant="outlined"
@@ -57,7 +56,8 @@ function App() {
             />
             <Button
               style={{
-                width: "33%",
+                width: "30%",
+                padding: "15px",
               }}
               variant="contained"
               color="error"
