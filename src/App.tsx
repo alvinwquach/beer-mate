@@ -3,6 +3,9 @@ import { schema } from "./graphql";
 
 import { TextField, Button } from "@mui/material";
 
+import RotateLeftIcon from "@mui/icons-material/RotateLeft";
+import SearchIcon from "@mui/icons-material/Search";
+
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import "./App.css";
@@ -41,60 +44,34 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <div
-          style={{
-            border: "1px solid red",
-            display: "flex",
-            flexDirection: "column-reverse",
-          }}
-        >
+        <div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               style={{
-                display: "flex",
-                width: "100%",
+                width: "67%",
               }}
               id="outlined-basic"
               variant="outlined"
               placeholder="Search for a beer"
               {...register("userInput")}
             />
+            <Button
+              style={{
+                width: "33%",
+              }}
+              variant="contained"
+              color="error"
+              onClick={handleClick}
+              endIcon={<RotateLeftIcon />}
+            >
+              Reset
+            </Button>
             {beerName ? <BeerFetcher beername={beerName} /> : null}
-            <div>
-              <h1>Welcome to Brewmate!</h1>
-              <p>
-                Type in your beer to find what to enjoy it with! Please note:
-                Not all beers may appear. Please click on the beer to learn
-                more!
-              </p>
-            </div>
             <div
               style={{
                 border: "1px solid red",
               }}
-            >
-              <Button
-                style={{
-                  display: "inline-block",
-                  width: "50%",
-                }}
-                variant="contained"
-                type="submit"
-              >
-                Brew... Mate!
-              </Button>
-              <Button
-                style={{
-                  display: "inline-block",
-                  width: "50%",
-                }}
-                variant="contained"
-                color="error"
-                onClick={handleClick}
-              >
-                Reset
-              </Button>
-            </div>
+            ></div>
           </form>
         </div>
       </div>
