@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.foodItem {
+  list-style-type: none;
+}
+
+img {
+  width: 10%;
+  height: 10%;
+}
