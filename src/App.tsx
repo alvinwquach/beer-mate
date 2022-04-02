@@ -10,6 +10,7 @@ import { useState } from "react";
 import "./App.css";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import BeerFetcher from "./components/BeerFetcher";
+import { SearchOutlined } from "@mui/icons-material";
 
 type FormValues = {
   userInput: string;
@@ -49,6 +50,10 @@ function App() {
               style={{
                 width: "70%",
               }}
+              // add search icon in text field
+              InputProps={{
+                startAdornment: <SearchOutlined />,
+              }}
               id="outlined-basic"
               variant="outlined"
               placeholder="Search for a beer"
@@ -67,11 +72,6 @@ function App() {
               Reset
             </Button>
             {beerName ? <BeerFetcher beername={beerName} /> : null}
-            <div
-              style={{
-                border: "1px solid red",
-              }}
-            ></div>
           </form>
         </div>
       </div>

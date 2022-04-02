@@ -80,7 +80,7 @@ export type Malt = {
 
 export type MashTemperature = {
   __typename?: 'MashTemperature';
-  duration: Scalars['Int'];
+  duration?: Maybe<Scalars['Int']>;
   temp?: Maybe<Temperature>;
 };
 

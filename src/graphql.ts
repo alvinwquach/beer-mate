@@ -10,7 +10,7 @@ type Beer {
   tagline: String!
   first_brewed: String!
   description: String!
-  image_url: String
+  image_url: String!
   abv: Float!
   ibu: Float!
   target_fg: Int!
@@ -85,6 +85,7 @@ type Query {
   getbeer: Beer
   getbeerbyname(name: String!): Beer
 }
+
 `;
 
 // apis

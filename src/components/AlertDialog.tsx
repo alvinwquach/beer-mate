@@ -31,9 +31,9 @@ export default function AlertDialog({ beer, open, thanks }: AlertDialogProps) {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <p>First Brewed: {beer.first_brewed}</p>
-            <p>Tips: {beer.brewers_tips}</p>
-            <p>Description: {beer.description}</p>
             <p>Tagline: {beer.tagline}</p>
+            <p>Description: {beer.description}</p>
+            <p>Tips: {beer.brewers_tips}</p>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
