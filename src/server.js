@@ -4,9 +4,7 @@ const { makeExecutableSchema } = require("@graphql-tools/schema");
 const fetch = require("node-fetch");
 // create express server
 const app = express();
-// app.get("/alvin", (req, res) => {
-//   res.send("Hello World!");
-// });
+
 
 const typeDefs = `
 type Beer {
@@ -93,6 +91,7 @@ type Query {
 
 `;
 
+// creating api call 
 const getFromApi = async () => {
   const response = await fetch("https://api.punkapi.com/v2/beers");
   return response.json();

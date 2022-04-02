@@ -85,7 +85,6 @@ type Query {
   getbeer: Beer
   getbeerbyname(name: String!): Beer
 }
-
 `;
 
 // apis

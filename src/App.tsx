@@ -43,7 +43,12 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div className="App">
+      <div
+        style={{
+          textAlign: "center",
+        }}
+        className="App"
+      >
         <div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
