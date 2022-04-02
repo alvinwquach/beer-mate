@@ -57,7 +57,7 @@ type MashTemperature {
 }
 
 type Temperature {
-  value: Int!
+  value: Int
   unit: String!
 }
 
@@ -88,7 +88,6 @@ type Query {
   getbeer: Beer
   getbeerbyname(name: String!): Beer
 }
-
 `;
 
 // creating api call 

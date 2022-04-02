@@ -78,6 +78,21 @@ function App() {
             </Button>
             {beerName ? <BeerFetcher beername={beerName} /> : null}
           </form>
+          <footer
+            style={{
+              textAlign: "center",
+              backgroundColor: "#60a5fa",
+              color: "white",
+              height: "10vh",
+              marginTop: "3rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textTransform: "uppercase",
+            }}
+          >
+            Designed by Alvin Quach
+          </footer>
         </div>
       </div>
     </ApolloProvider>
