@@ -48,7 +48,7 @@ type MashTemperature {
 }
 
 type Temperature {
-  value: Int!
+  value: Int
   unit: String!
 }
 
