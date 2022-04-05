@@ -52,7 +52,7 @@ function App() {
         <div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
-              style={{
+              sx={{
                 width: "70%",
               }}
               // add search icon in text field
@@ -65,7 +65,7 @@ function App() {
               {...register("userInput")}
             />
             <Button
-              style={{
+              sx={{
                 width: "30%",
                 padding: "15px",
               }}
@@ -81,14 +81,15 @@ function App() {
           <footer
             style={{
               textAlign: "center",
-              backgroundColor: "#60a5fa",
+              backgroundColor: "#244487",
               color: "white",
               height: "10vh",
-              marginTop: "3rem",
+              fontSize: "1.5rem",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               textTransform: "uppercase",
+              letterSpacing: "0.5px",
             }}
           >
             Designed by Alvin Quach
