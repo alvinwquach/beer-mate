@@ -12,6 +12,8 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import BeerFetcher from "./components/BeerFetcher";
 import { SearchOutlined } from "@mui/icons-material";
 
+
+
 type FormValues = {
   userInput: string;
 };
@@ -45,10 +47,35 @@ function App() {
     <ApolloProvider client={client}>
       <div
         style={{
-          textAlign: "center",
+          backgroundColor: "#244487",
         }}
-        className="App"
       >
+        <h1
+          style={{
+            textAlign: "center",
+            textTransform: "uppercase",
+            letterSpacing: "0.25em",
+            paddingTop: "25px",
+            backgroundColor: "#244487",
+            color: "white",
+          }}
+        >
+          Brewmate
+        </h1>
+        <p
+          style={{
+            textAlign: "center",
+            letterSpacing: "0.1em",
+            backgroundColor: "#244487",
+            color: "white",
+            fontSize: "1.5rem",
+          }}
+        >
+          Search for a beer to find what it pairs best with. Click on the beer
+          to learn more!
+        </p>
+      </div>
+      <div className="App">
         <div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
