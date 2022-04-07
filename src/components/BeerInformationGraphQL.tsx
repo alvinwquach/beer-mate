@@ -32,39 +32,25 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
         className="beerInformationGraphql"
       >
         <Container>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-end",
-            }}
-          >
+          <div style={{}}>
             <p
               style={{
-                // backgroundColor: "rgba(0,47,150,0.5)",
-                // borderBottom: "1px solid rgba(0,47,150,0.5)",
-                textShadow: "-1px -1px 1px white",
-                color: "black",
-                padding: "10px",
-                margin: "10px",
+                display: "flex",
+                justifyContent: "flex-end",
+                fontSize: "3rem",
                 textTransform: "uppercase",
-                fontSize: "2rem",
+                color: "black",
+                borderRadius: "10px",
               }}
             >
               {beer.name}
             </p>
             <p
               style={{
-                // backgroundColor: "rgba(0,47,150,0.5)",
-                // borderBottom: "1px solid rgba(0,47,150,0.5)",
-                textShadow: "-1px -1px 1px white",
-                padding: "10px",
-                color: "black",
-                margin: "10px",
                 display: "flex",
-                textAlign: "center",
-                alignItems: "center",
-                fontSize: "2rem",
+                justifyContent: "flex-end",
+                fontSize: "3rem",
+                color: "black",
               }}
             >
               {beer.abv}%
@@ -72,57 +58,59 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
           </div>
           <div
             style={{
-              border: "1px solid black",
-              padding: "10px",
-              // display: "grid",
-              // gridTemplateColumns: "1fr 1fr 1fr",
+              display: "flex",
             }}
           >
-            <ul
+            <img
               style={{
-                fontSize: "1.5rem",
-                textAlign: "right",
-                textTransform: "uppercase",
+                display: "block",
+                backgroundColor: "#eee",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+                marginTop: "50px",
+                position: "sticky",
+                cursor: "pointer",
               }}
-            >
-              {" "}
-              Food Pairings
-              {beer.food_pairing.map((fooditem) => {
-                return (
-                  <li
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1fr",
-                      gridTemplateRows: "1fr",
-                      textAlign: "right",
-                      //   border: "1px solid black",
-                      // backgroundColor: "#244487",
-                      color: "black",
-                      padding: "25px",
-                      // marginTop: "10px",
-                      borderBottom: "1px solid black",
-                      textTransform: "uppercase",
-                    }}
-                    className="foodItem"
-                  >
-                    {fooditem}
-                  </li>
-                );
-              })}
-            </ul>
+              onClick={handleClickOpen}
+              src={beer.image_url}
+              alt=""
+            />
           </div>
-          <img
+          {/* <div
             style={{
-              backgroundColor: "#eee",
-              textAlign: "center",
-              marginTop: "50px",
-              position: "sticky",
-              cursor: "pointer",
+              border: "1px solid black",
+              padding: "2rem",
             }}
-            onClick={handleClickOpen}
-            src={beer.image_url}
-            alt=""
-          />
+          > */}
+          <ul
+            style={{
+              textAlign: "right",
+              textTransform: "uppercase",
+            }}
+          >
+            {" "}
+            Food Pairings
+            {beer.food_pairing.map((fooditem) => {
+              return (
+                <li
+                  style={{
+                    textTransform: "uppercase",
+                    padding: "10px",
+                    display: "flex",
+                    alignSelf: "center",
+                    // alignItems: "center",
+                    // justifyItems: "center",
+                    justifyContent: "flex-end",
+                  }}
+                  className="foodItem"
+                >
+                  {fooditem}
+                </li>
+              );
+            })}
+          </ul>
+          {/* </div> */}
         </Container>
         <AlertDialog open={open} thanks={close} beer={beer} />
       </div>
