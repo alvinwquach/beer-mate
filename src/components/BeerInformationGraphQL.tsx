@@ -94,8 +94,10 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
                 <li
                   style={{
                     textTransform: "uppercase",
+                    letterSpacing: "0.25em",
                     listStyleType: "none",
-                    padding: "10px",
+                    padding: "25px",
+                    borderBottom: "1px solid grey",
                   }}
                   className="foodItem"
                 >
