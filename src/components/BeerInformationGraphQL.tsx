@@ -2,8 +2,6 @@ import { useState } from "react";
 
 import AlertDialog from "./AlertDialog";
 
-import { Container } from "@mui/material";
-
 import { GetBeerNameQuery } from "../generated/graphql";
 
 type BeerInformationGraphQLProps = {
@@ -50,6 +48,7 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
           style={{
             display: "flex",
             flexDirection: "column",
+            margin: "0 auto",
           }}
         >
           <p
@@ -58,7 +57,7 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
               textAlign: "center",
               fontSize: "3rem",
               padding: "80px",
-              backgroundColor: "lightblue",
+              backgroundColor: "white",
               border: "1px solid black",
               width: "100%",
             }}
@@ -69,7 +68,7 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
             style={{
               fontSize: "2rem",
               textAlign: "center",
-              backgroundColor: "lightblue",
+              backgroundColor: "white",
               padding: "80px",
               border: "1px solid black",
               width: "100%",
@@ -80,7 +79,7 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
           </p>
           <ul
             style={{
-              backgroundColor: "lightblue",
+              backgroundColor: "white",
               border: "1px solid black",
               width: "100%",
               textAlign: "center",
