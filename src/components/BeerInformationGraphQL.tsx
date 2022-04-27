@@ -24,90 +24,67 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
     <>
       <div
         style={{
-          display: "flex",
-          margin: "auto auto",
-          justifyContent: "center",
-          columnGap: "12rem",
-          backgroundColor: "#eee",
+          backgroundColor: "#94a3b8",
         }}
         className="beerInformationGraphql"
       >
-        {/* <Container> */}
-        <div>
-          <img
-            style={{
-              padding: "50px",
-              margin: "50px",
-            }}
-            onClick={handleClickOpen}
-            src={beer.image_url}
-            alt=""
-          />
-        </div>
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
+            maxWidth: "24rem",
+            borderRadius: "0.25rem",
+            overflow: "hidden",
+            boxShadow:
+              "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
             margin: "0 auto",
+            border: "1px solid #fff",
           }}
         >
-          <p
+          <img onClick={handleClickOpen} src={beer.image_url!} alt="" />
+          <div
             style={{
-              textTransform: "uppercase",
-              textAlign: "center",
-              fontSize: "3rem",
-              padding: "80px",
-              backgroundColor: "white",
-              border: "1px solid black",
-              width: "100%",
+              padding: "1rem 1.5rem",
             }}
           >
-            {beer.name}
-          </p>
-          <p
-            style={{
-              fontSize: "2rem",
-              textAlign: "center",
-              backgroundColor: "white",
-              padding: "80px",
-              border: "1px solid black",
-              width: "100%",
-              margin: "auto auto",
-            }}
-          >
-            {beer.abv}%
-          </p>
-          <ul
-            style={{
-              backgroundColor: "white",
-              border: "1px solid black",
-              width: "100%",
-              textAlign: "center",
-              textTransform: "uppercase",
-              padding: "80px",
-              fontSize: "1.5rem",
-            }}
-          >
-            Food Pairings
-            {beer.food_pairing.map((fooditem) => {
-              return (
-                <li
-                  style={{
-                    textTransform: "uppercase",
-                    letterSpacing: "0.25em",
-                    listStyleType: "none",
-                    padding: "25px",
-                    borderBottom: "1px solid grey",
-                  }}
-                  className="foodItem"
-                >
-                  {fooditem}
-                </li>
-              );
-            })}
-          </ul>
+            <div>
+              <p
+                style={{
+                  color: "#374151",
+                  fontSize: "1.25rem",
+                  fontWeight: "700",
+                  lineHeight: "1.75rem",
+                }}
+              >
+                {beer.name}
+              </p>
+              <p
+                style={{
+                  color: "#374151",
+                  fontSize: "1rem",
+                  fontWeight: "700",
+                  lineHeight: "1.5rem",
+                }}
+              >
+                {beer.abv}%
+              </p>
+              <ul>
+                {beer.food_pairing.map((fooditem) => {
+                  return (
+                    <li
+                      style={{
+                        textAlign: "left",
+                        listStyleType: "none",
+                        textTransform: "capitalize",
+                      }}
+                      className="foodItem"
+                    >
+                      {fooditem}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
         </div>
-        {/* </Container> */}
         <AlertDialog open={open} thanks={close} beer={beer} />
       </div>
     </>

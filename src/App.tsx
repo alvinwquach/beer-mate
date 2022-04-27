@@ -65,10 +65,10 @@ function App() {
         <p
           style={{
             textAlign: "center",
-            letterSpacing: "0.2em",
             backgroundColor: "#244487",
             color: "white",
             fontSize: "1.5rem",
+            paddingBottom: "1rem",
           }}
         >
           Search for a beer to find what it pairs best with. Click on the beer
@@ -116,7 +116,6 @@ function App() {
               alignItems: "center",
               justifyContent: "center",
               textTransform: "uppercase",
-              letterSpacing: "0.5px",
             }}
           >
             Designed by Alvin Quach
