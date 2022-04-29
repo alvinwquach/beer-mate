@@ -47,7 +47,7 @@ function App() {
     <ApolloProvider client={client}>
       <div
         style={{
-          backgroundColor: "#244487",
+          backgroundColor: "#334155",
         }}
       >
         <h1
@@ -55,8 +55,8 @@ function App() {
             textAlign: "center",
             textTransform: "uppercase",
             letterSpacing: "0.25em",
-            paddingTop: "25px",
-            backgroundColor: "#244487",
+            padding: "1.5rem",
+            backgroundColor: "#475569",
             color: "white",
           }}
         >
@@ -64,25 +64,31 @@ function App() {
         </h1>
         <p
           style={{
-            textAlign: "center",
-            backgroundColor: "#244487",
+            maxWidth: "90%",
+            backgroundColor: "#334155",
             color: "white",
+            paddingBottom: "1.5rem",
             fontSize: "1.5rem",
-            paddingBottom: "1rem",
+            lineHeight: "1.5rem",
+            marginLeft: "1.5rem",
           }}
         >
           Search for a beer to find what it pairs best with. Click on the beer
           to learn more!
         </p>
       </div>
-      <div className="App">
+      <div
+        style={{
+          backgroundColor: "#cbd5e1",
+        }}
+        className="App"
+      >
         <div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               sx={{
                 width: "70%",
               }}
-              // add search icon in text field
               InputProps={{
                 startAdornment: <SearchOutlined />,
               }}
@@ -107,15 +113,14 @@ function App() {
           </form>
           <footer
             style={{
-              textAlign: "center",
-              backgroundColor: "#244487",
+              backgroundColor: "#475569",
               color: "white",
               height: "10vh",
               fontSize: "1.5rem",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              textTransform: "uppercase",
+              textTransform: "capitalize",
             }}
           >
             Designed by Alvin Quach
