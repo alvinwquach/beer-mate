@@ -1,16 +1,31 @@
+import { SchemaLink } from "@apollo/client/link/schema";
+import { schema } from "./graphql";
+
 import { TextField, Button } from "@mui/material";
+
+import RotateLeftIcon from "@mui/icons-material/RotateLeft";
+
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { BeerApi, getBeerFromAPIByName } from "./beerapi";
-import BeerInformation from "./components/BeerInformation";
 import "./App.css";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import BeerFetcher from "./components/BeerFetcher";
+import { SearchOutlined } from "@mui/icons-material";
+
+
 
 type FormValues = {
   userInput: string;
 };
 
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  // schema hooks up to local server
+  link: new SchemaLink({ schema }),
+});
+
 function App() {
-  const [beerFromApi, setBeerFromApi] = useState<BeerApi>();
+  const [beerName, setBeerName] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   //destructured react hook form to handle userInput & to reset the text field
@@ -22,51 +37,96 @@ function App() {
 
   // created event handler to retrieve beer that matches userInput
   const onSubmit = async (data: FormValues) => {
-    const beerList = await getBeerFromAPIByName(data.userInput);
-    setBeerFromApi(beerList[0]);
     setSubmitted(true);
+    setBeerName(data.userInput);
   };
 
   const handleClick = () => resetField("userInput");
 
   return (
-    <div className="App">
-      <h1>Welcome to Brewmate!</h1>
-      <p>
-        Type in your beer to find what to enjoy it with! Please note: Not all
-        beers may appear. Please click on the beer to learn more!
-      </p>
+    <ApolloProvider client={client}>
       <div
         style={{
-          border: "1px solid red",
-          display: "flex",
-          flexDirection: "column-reverse",
+          backgroundColor: "#475569",
         }}
       >
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <TextField
-            id="outlined-basic"
-            // label="Outlined"
-            variant="outlined"
-            placeholder="Brewmate"
-            {...register("userInput")}
-          />
-          <Button variant="contained" type="submit">
-            Brew... Mate!
-          </Button>
-          <Button variant="contained" color="error" onClick={handleClick}>
-            Reset
-          </Button>
-        </form>
-
-        {/* verifies to see if the beer from API exists, if not show error msg */}
-        {beerFromApi ? (
-          <BeerInformation beer={beerFromApi} />
-        ) : submitted ? (
-          <p>Sorry, no beer for you!</p>
-        ) : null}
+        <h1
+          style={{
+            textAlign: "center",
+            textTransform: "uppercase",
+            letterSpacing: "0.25em",
+            padding: "1.5rem",
+            backgroundColor: "#475569",
+            color: "white",
+          }}
+        >
+          Brewmate
+        </h1>
+        <p
+          style={{
+            maxWidth: "90%",
+            backgroundColor: "#475569",
+            color: "white",
+            paddingBottom: "1.5rem",
+            fontSize: "1.25rem",
+            lineHeight: "1.5rem",
+            marginLeft: "1.5rem",
+          }}
+        >
+          Search for a beer to find what it pairs best with. Click on the beer
+          to learn more!
+        </p>
       </div>
-    </div>
+      <div
+        style={{
+          backgroundColor: "#cbd5e1",
+        }}
+        className="App"
+      >
+        <div>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <TextField
+              sx={{
+                width: "70%",
+              }}
+              InputProps={{
+                startAdornment: <SearchOutlined />,
+              }}
+              id="outlined-basic"
+              variant="outlined"
+              placeholder="Search for a beer"
+              {...register("userInput")}
+            />
+            <Button
+              sx={{
+                width: "30%",
+                padding: "15px",
+              }}
+              variant="contained"
+              color="error"
+              onClick={handleClick}
+              endIcon={<RotateLeftIcon />}
+            >
+              Reset
+            </Button>
+            {beerName ? <BeerFetcher beername={beerName} /> : null}
+          </form>
+          <footer
+            style={{
+              backgroundColor: "#475569",
+              color: "white",
+              height: "10vh",
+              fontSize: "1.5rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            Designed and developed by Alvin Quach
+          </footer>
+        </div>
+      </div>
+    </ApolloProvider>
   );
 }
 

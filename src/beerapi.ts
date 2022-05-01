@@ -1,15 +1,20 @@
+// creating API call
 export const getFromApi = async (): Promise<BeerApi[]> => {
-  return fetch("https://api.punkapi.com/v2/beers").then((response) =>
-    response.json()
-  );
+  const response = await fetch("https://api.punkapi.com/v2/beers");
+  return response.json();
 };
 
-export const getBeerFromAPIByName = async (beerName: string): Promise<BeerApi[]> => {
-  return fetch(`https://api.punkapi.com/v2/beers/?beer_name=${beerName}`).then((response) =>
-    response.json()
+//creating api call to grab beer by name
+export const getBeerFromAPIByName = async (
+  beerName: string
+): Promise<BeerApi[]> => {
+  const response = await fetch(
+    `https://api.punkapi.com/v2/beers/?beer_name=${beerName}`
   );
+  return response.json();
 };
 
+// creating nested types for ts
 type Method = {
   mash_temp: MashTemperature[];
   fermentation: Fermentation;
@@ -63,6 +68,7 @@ type Amount = {
   unit: "kilograms" | "grams";
 };
 
+// creating types for ts
 export type BeerApi = {
   id: number;
   name: string;
