@@ -47,7 +47,7 @@ function App() {
     <ApolloProvider client={client}>
       <div
         style={{
-          backgroundColor: "#334155",
+          backgroundColor: "#475569",
         }}
       >
         <h1
@@ -65,10 +65,10 @@ function App() {
         <p
           style={{
             maxWidth: "90%",
-            backgroundColor: "#334155",
+            backgroundColor: "#475569",
             color: "white",
             paddingBottom: "1.5rem",
-            fontSize: "1.5rem",
+            fontSize: "1.25rem",
             lineHeight: "1.5rem",
             marginLeft: "1.5rem",
           }}
@@ -120,10 +120,9 @@ function App() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              textTransform: "capitalize",
             }}
           >
-            Designed by Alvin Quach
+            Designed and developed by Alvin Quach
           </footer>
         </div>
       </div>

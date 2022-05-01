@@ -40,7 +40,7 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
             fontWeight: "bold",
             margin: "1rem",
             backgroundColor: (theme) => alpha(theme.palette.primary.main, 0.1),
-            color: "primary.main",
+            color: "#fff",
           }}
         >
           <Box>
@@ -69,17 +69,21 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
               >
                 <Box
                   component="span"
-                  sx={{ color: "primary.main", fontSize: 22, mt: 1 }}
+                  sx={{ color: "#18181b", fontSize: 22, mt: 1 }}
                 >
                   {beer.name}
                 </Box>
                 <Box
                   component="span"
-                  sx={{ color: "primary.main", fontSize: 16, mt: 1 }}
+                  sx={{ color: "#18181b", fontSize: 22, mt: 1 }}
                 >
                   {beer.abv}%
                 </Box>
-                <ul>
+                <ul
+                  style={{
+                    color: "#111827",
+                  }}
+                >
                   Food Pairings
                   {beer.food_pairing.map((fooditem) => {
                     return (
@@ -87,13 +91,10 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
                         sx={{
                           mt: 1.5,
                           p: 0.5,
-                          backgroundColor: (theme) =>
-                            alpha(theme.palette.primary.main, 0.1),
                           borderRadius: "5px",
-                          color: "primary.main",
                           fontWeight: "medium",
                           display: "flex",
-                          fontSize: 12,
+                          fontSize: "1rem",
                           alignItems: "flex-end",
                         }}
                       >
@@ -102,6 +103,7 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
                             textAlign: "left",
                             listStyleType: "none",
                             textTransform: "capitalize",
+                            color: "#1f2937",
                           }}
                           className="foodItem"
                         >
