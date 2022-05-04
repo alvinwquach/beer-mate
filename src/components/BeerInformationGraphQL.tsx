@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 
@@ -55,7 +56,7 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
                 marginTop: "1rem",
               }}
               alt="The image of the beer."
-              src={beer.image_url!}
+              src={beer.image_url ?? "/images/ice-cold-beer-2.jpeg"}
             />
             <Box>
               <Box
@@ -121,9 +122,19 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
       </Container>
     </>
   ) : (
-    <>
-      <p>No beer for you. Please try again!</p>
-    </>
+    <Box
+      onClick={handleClickOpen}
+      component="img"
+      sx={{
+        display: "block",
+        margin: "0 auto",
+        height: "12rem",
+        width: "12rem",
+        marginTop: "1rem",
+      }}
+      alt="The image of the beer."
+      src={"/images/NoBeerForYou.jpeg"}
+    />
   );
 }
 

@@ -26,7 +26,6 @@ const client = new ApolloClient({
 
 function App() {
   const [beerName, setBeerName] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
   //destructured react hook form to handle userInput & to reset the text field
   const { register, resetField, handleSubmit } = useForm({
@@ -37,7 +36,6 @@ function App() {
 
   // created event handler to retrieve beer that matches userInput
   const onSubmit = async (data: FormValues) => {
-    setSubmitted(true);
     setBeerName(data.userInput);
   };
 
