@@ -5,7 +5,6 @@ const fetch = require("node-fetch");
 // create express server
 const app = express();
 
-
 const typeDefs = `
 type Beer {
   id: Int!

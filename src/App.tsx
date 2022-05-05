@@ -9,10 +9,11 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import "./App.css";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import Header from "./components/Header";
 import BeerFetcher from "./components/BeerFetcher";
 import { SearchOutlined } from "@mui/icons-material";
-
-
+import Footer from "./components/Footer";
+import { url } from "inspector";
 
 type FormValues = {
   userInput: string;
@@ -45,43 +46,15 @@ function App() {
     <ApolloProvider client={client}>
       <div
         style={{
-          backgroundColor: "#475569",
-        }}
-      >
-        <h1
-          style={{
-            textAlign: "center",
-            textTransform: "uppercase",
-            letterSpacing: "0.25em",
-            padding: "1.5rem",
-            backgroundColor: "#475569",
-            color: "white",
-          }}
-        >
-          Brewmate
-        </h1>
-        <p
-          style={{
-            maxWidth: "90%",
-            backgroundColor: "#475569",
-            color: "white",
-            paddingBottom: "1.5rem",
-            fontSize: "1.25rem",
-            lineHeight: "1.5rem",
-            marginLeft: "1.5rem",
-          }}
-        >
-          Search for a beer to find what it pairs best with. Click on the beer
-          to learn more!
-        </p>
-      </div>
-      <div
-        style={{
-          backgroundColor: "#cbd5e1",
+          backgroundImage: `url("/images/background-image.jpg")`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
         className="App"
       >
         <div>
+          <Header />
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               sx={{
@@ -98,7 +71,7 @@ function App() {
             <Button
               sx={{
                 width: "30%",
-                padding: "15px",
+                padding: "1rem",
               }}
               variant="contained"
               color="error"
@@ -109,19 +82,7 @@ function App() {
             </Button>
             {beerName ? <BeerFetcher beername={beerName} /> : null}
           </form>
-          <footer
-            style={{
-              backgroundColor: "#475569",
-              color: "white",
-              height: "10vh",
-              fontSize: "1.5rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            Designed and developed by Alvin Quach
-          </footer>
+          <Footer />
         </div>
       </div>
     </ApolloProvider>

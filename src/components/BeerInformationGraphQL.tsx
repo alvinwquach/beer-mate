@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
+import { Box, Container } from "@mui/material";
 
 import { alpha } from "@mui/material/styles";
 
@@ -122,19 +120,19 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
       </Container>
     </>
   ) : (
-    <Box
-      onClick={handleClickOpen}
-      component="img"
-      sx={{
-        display: "block",
-        margin: "0 auto",
-        height: "12rem",
-        width: "12rem",
-        marginTop: "1rem",
-      }}
-      alt="The image of the beer."
-      src={"/images/NoBeerForYou.jpeg"}
-    />
+    <Container maxWidth="sm">
+      <Box
+        onClick={handleClickOpen}
+        component="img"
+        sx={{
+          display: "block",
+          margin: "auto",
+          width: "50%",
+        }}
+        alt="The image of the beer."
+        src={"/images/no-beer-for-you.jpeg"}
+      />
+    </Container>
   );
 }
 
