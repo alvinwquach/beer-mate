@@ -15,9 +15,11 @@ function Header() {
       >
         Brewmate
       </h1>
+
       <p
         style={{
-          marginLeft: "0.5rem",
+          backgroundColor: "#374151",
+          color: "#E4E4E7",
           fontSize: "1.5rem",
         }}
       >

@@ -13,7 +13,6 @@ import Header from "./components/Header";
 import BeerFetcher from "./components/BeerFetcher";
 import { SearchOutlined } from "@mui/icons-material";
 import Footer from "./components/Footer";
-import { url } from "inspector";
 
 type FormValues = {
   userInput: string;
@@ -58,6 +57,7 @@ function App() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               sx={{
+                color: "#fff",
                 width: "70%",
               }}
               InputProps={{

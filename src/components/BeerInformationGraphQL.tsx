@@ -68,19 +68,19 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
               >
                 <Box
                   component="span"
-                  sx={{ color: "#18181b", fontSize: 22, mt: 1 }}
+                  sx={{ color: "#e4e4e7", fontSize: 22, mt: 1 }}
                 >
                   {beer.name}
                 </Box>
                 <Box
                   component="span"
-                  sx={{ color: "#18181b", fontSize: 22, mt: 1 }}
+                  sx={{ color: "#e4e4e7", fontSize: 22, mt: 1 }}
                 >
                   {beer.abv}%
                 </Box>
                 <ul
                   style={{
-                    color: "#111827",
+                    color: "#fff",
                   }}
                 >
                   Food Pairings
@@ -102,7 +102,7 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
                             textAlign: "left",
                             listStyleType: "none",
                             textTransform: "capitalize",
-                            color: "#1f2937",
+                            color: "#e4e4e7",
                           }}
                           className="foodItem"
                         >
@@ -122,16 +122,32 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
   ) : (
     <Container maxWidth="sm">
       <Box
-        onClick={handleClickOpen}
-        component="img"
         sx={{
-          display: "block",
-          margin: "auto",
-          width: "50%",
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: "center",
+          bgcolor: "Background.alpha",
+          overflow: "hidden",
+          borderRadius: "12px",
+          boxShadow: 1,
+          fontWeight: "bold",
+          margin: "1rem",
+          backgroundColor: (theme) => alpha(theme.palette.primary.main, 0.1),
+          color: "#fff",
         }}
-        alt="The image of the beer."
-        src={"/images/no-beer-for-you.jpeg"}
-      />
+      >
+        <Box
+          onClick={handleClickOpen}
+          component="img"
+          sx={{
+            display: "block",
+            margin: "auto",
+            width: "100%",
+          }}
+          alt="The image of the beer."
+          src={"/images/no-beer-for-you.jpeg"}
+        />
+      </Box>
     </Container>
   );
 }
