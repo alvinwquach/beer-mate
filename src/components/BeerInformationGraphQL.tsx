@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
+import { Box, Container } from "@mui/material";
 
 import { alpha } from "@mui/material/styles";
 
@@ -55,7 +54,7 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
                 marginTop: "1rem",
               }}
               alt="The image of the beer."
-              src={beer.image_url!}
+              src={beer.image_url ?? "/images/ice-cold-beer-2.jpeg"}
             />
             <Box>
               <Box
@@ -69,19 +68,19 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
               >
                 <Box
                   component="span"
-                  sx={{ color: "#18181b", fontSize: 22, mt: 1 }}
+                  sx={{ color: "#e4e4e7", fontSize: 22, mt: 1 }}
                 >
                   {beer.name}
                 </Box>
                 <Box
                   component="span"
-                  sx={{ color: "#18181b", fontSize: 22, mt: 1 }}
+                  sx={{ color: "#e4e4e7", fontSize: 22, mt: 1 }}
                 >
                   {beer.abv}%
                 </Box>
                 <ul
                   style={{
-                    color: "#111827",
+                    color: "#fff",
                   }}
                 >
                   Food Pairings
@@ -103,7 +102,7 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
                             textAlign: "left",
                             listStyleType: "none",
                             textTransform: "capitalize",
-                            color: "#1f2937",
+                            color: "#e4e4e7",
                           }}
                           className="foodItem"
                         >
@@ -121,9 +120,35 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
       </Container>
     </>
   ) : (
-    <>
-      <p>No beer for you. Please try again!</p>
-    </>
+    <Container maxWidth="sm">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: "center",
+          bgcolor: "Background.alpha",
+          overflow: "hidden",
+          borderRadius: "12px",
+          boxShadow: 1,
+          fontWeight: "bold",
+          margin: "1rem",
+          backgroundColor: (theme) => alpha(theme.palette.primary.main, 0.1),
+          color: "#fff",
+        }}
+      >
+        <Box
+          onClick={handleClickOpen}
+          component="img"
+          sx={{
+            display: "block",
+            margin: "auto",
+            width: "100%",
+          }}
+          alt="The image of the beer."
+          src={"/images/no-beer-for-you.jpeg"}
+        />
+      </Box>
+    </Container>
   );
 }
 
