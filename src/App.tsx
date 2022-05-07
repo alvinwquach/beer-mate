@@ -26,6 +26,7 @@ const client = new ApolloClient({
 
 function App() {
   const [beerName, setBeerName] = useState("");
+  const [searched, setSearched] = useState(false);
 
   //destructured react hook form to handle userInput & to reset the text field
   const { register, resetField, handleSubmit } = useForm({
@@ -37,28 +38,22 @@ function App() {
   // created event handler to retrieve beer that matches userInput
   const onSubmit = async (data: FormValues) => {
     setBeerName(data.userInput);
+    setSearched(true);
   };
 
   const handleClick = () => resetField("userInput");
 
   return (
     <ApolloProvider client={client}>
-      <div
-        style={{
-          backgroundImage: `url("/images/background-image.jpg")`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-        className="App"
-      >
+      <div className="App">
         <div>
           <Header />
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
               sx={{
                 color: "#fff",
-                width: "70%",
+                width: "65%",
+                margin: "1rem",
               }}
               InputProps={{
                 startAdornment: <SearchOutlined />,
@@ -70,8 +65,9 @@ function App() {
             />
             <Button
               sx={{
-                width: "30%",
+                width: "25%",
                 padding: "1rem",
+                marginTop: "1rem",
               }}
               variant="contained"
               color="error"
@@ -80,7 +76,9 @@ function App() {
             >
               Reset
             </Button>
-            {beerName ? <BeerFetcher beername={beerName} /> : null}
+            {beerName ? (
+              <BeerFetcher beername={beerName} searched={searched} />
+            ) : null}
           </form>
           <Footer />
         </div>
