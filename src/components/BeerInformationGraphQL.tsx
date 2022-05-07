@@ -10,9 +10,13 @@ import { GetBeerNameQuery } from "../generated/graphql";
 
 type BeerInformationGraphQLProps = {
   beerinfo: GetBeerNameQuery;
+  searched: boolean;
 };
 
-function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
+function BeerInformationGraphQL({
+  beerinfo,
+  searched,
+}: BeerInformationGraphQLProps) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -24,6 +28,7 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
   };
 
   const beer = beerinfo.getbeerbyname;
+
   return beer ? (
     <>
       <Container maxWidth="sm">
@@ -68,19 +73,20 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
               >
                 <Box
                   component="span"
-                  sx={{ color: "#e4e4e7", fontSize: 22, mt: 1 }}
+                  sx={{ color: "#27272a", fontSize: 22, mt: 1 }}
                 >
                   {beer.name}
                 </Box>
                 <Box
                   component="span"
-                  sx={{ color: "#e4e4e7", fontSize: 22, mt: 1 }}
+                  sx={{ color: "#27272a", fontSize: 22, mt: 1 }}
                 >
                   {beer.abv}%
                 </Box>
-                <ul
-                  style={{
-                    color: "#fff",
+                <Box
+                  component="ul"
+                  sx={{
+                    color: "#27272a",
                   }}
                 >
                   Food Pairings
@@ -97,21 +103,23 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
                           alignItems: "flex-end",
                         }}
                       >
-                        <li
-                          style={{
+                        <Box
+                          component="li"
+                          sx={{
+                            className: "foodItem",
+                            color: "#27272a",
                             textAlign: "left",
                             listStyleType: "none",
+                            fontSize: "1.25rem",
                             textTransform: "capitalize",
-                            color: "#e4e4e7",
                           }}
-                          className="foodItem"
                         >
                           {fooditem}
-                        </li>
+                        </Box>
                       </Box>
                     );
                   })}
-                </ul>
+                </Box>
               </Box>
             </Box>
           </Box>
@@ -124,25 +132,26 @@ function BeerInformationGraphQL({ beerinfo }: BeerInformationGraphQLProps) {
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          height: "65vh",
+          width: "65vh",
+          margin: "0 auto",
           alignItems: "center",
-          bgcolor: "Background.alpha",
+          bgcolor: "background.paper",
           overflow: "hidden",
           borderRadius: "12px",
           boxShadow: 1,
           fontWeight: "bold",
-          margin: "1rem",
           backgroundColor: (theme) => alpha(theme.palette.primary.main, 0.1),
           color: "#fff",
         }}
       >
         <Box
-          onClick={handleClickOpen}
           component="img"
           sx={{
             display: "block",
-            margin: "auto",
-            width: "100%",
+            margin: "0 auto",
+            maxHeight: "90%",
+            maxWidth: "90%",
           }}
           alt="The image of the beer."
           src={"/images/no-beer-for-you.jpeg"}
