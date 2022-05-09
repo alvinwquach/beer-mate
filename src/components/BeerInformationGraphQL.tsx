@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-import { Box, Container } from "@mui/material";
-
-import { alpha } from "@mui/material/styles";
+import { Box, Container, alpha } from "@mui/material";
 
 import AlertDialog from "./AlertDialog";
 
@@ -31,6 +29,36 @@ function BeerInformationGraphQL({
 
   return beer ? (
     <>
+      {!searched ? (
+        <Container maxWidth="sm">
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              alignItems: "center",
+              bgcolor: "background.paper",
+              overflow: "hidden",
+              borderRadius: "12px",
+              boxShadow: 1,
+              fontWeight: "bold",
+              margin: "1rem",
+              backgroundColor: (theme) =>
+                alpha(theme.palette.primary.main, 0.1),
+              color: "#fff",
+            }}
+          >
+            <Box component="h2">
+              sx=
+              {{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              Welcome to Brewmate!
+            </Box>
+          </Box>
+        </Container>
+      ) : null}
       <Container maxWidth="sm">
         <Box
           sx={{
@@ -72,13 +100,13 @@ function BeerInformationGraphQL({
                 }}
               >
                 <Box
-                  component="span"
+                  component="p"
                   sx={{ color: "#27272a", fontSize: 22, mt: 1 }}
                 >
                   {beer.name}
                 </Box>
                 <Box
-                  component="span"
+                  component="p"
                   sx={{ color: "#27272a", fontSize: 22, mt: 1 }}
                 >
                   {beer.abv}%
@@ -146,16 +174,16 @@ function BeerInformationGraphQL({
         }}
       >
         <Box
-          component="img"
+          component="p"
           sx={{
-            display: "block",
+            color: "#27272a",
+            fontSize: 22,
             margin: "0 auto",
-            maxHeight: "90%",
-            maxWidth: "90%",
           }}
-          alt="The image of the beer."
-          src={"/images/no-beer-for-you.jpeg"}
-        />
+        >
+          That beer does not exist in our database. Please try your search
+          again!
+        </Box>
       </Box>
     </Container>
   );

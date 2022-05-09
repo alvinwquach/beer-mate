@@ -4,18 +4,58 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Box } from "@mui/material";
 import React from "react";
 
 function Footer() {
   return (
-    <footer className="footer items-center bg-base-content p-4 text-neutral-content dark:bg-slate-300">
-      <div className="grid-flow-col items-center">
-        <p className="text-base font-normal dark:text-zinc-800">
+    <Box
+      component="footer"
+      sx={{
+        display: "grid",
+        width: "100%",
+        gridAutoFlow: "row",
+        placeItems: "start",
+        rowGap: "2.5 rem",
+        columnGap: "1rem",
+        fontSize: "0.875rem",
+        lineHeight: "1.25rem",
+        alignItems: "center",
+        padding: "1rem",
+      }}
+    >
+      <div
+        style={{
+          gridAutoFlow: "column",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          component="p"
+          sx={{
+            fontSize: "1rem",
+            lineHeight: "1.5rem",
+            fontWeight: "400",
+          }}
+        >
           Designed and developed by{" "}
-          <span className="capitalize">alvin quach</span>&copy;
-        </p>
+          <span
+            style={{
+              textTransform: "capitalize",
+            }}
+          >
+            alvin quach
+          </span>
+          &copy;
+        </Box>
       </div>
-      <div className="grid-flow-col gap-4 dark:text-zinc-800 md:place-self-center md:justify-self-end">
+      <div
+        style={{
+          gridAutoFlow: "column",
+          gap: "1rem",
+        }}
+        className="grid-flow-col gap-4 dark:text-zinc-800 md:place-self-center md:justify-self-end"
+      >
         <a
           href="http://github.com/alvinwquach"
           target="_blank"
@@ -50,7 +90,7 @@ function Footer() {
           />
         </a>
       </div>
-    </footer>
+    </Box>
   );
 }
 
