@@ -22,6 +22,8 @@ function Footer() {
         lineHeight: "1.25rem",
         alignItems: "center",
         padding: "1rem",
+        backgroundColor: "#334155",
+        color: "#e5e5e5",
       }}
     >
       <div
@@ -53,6 +55,8 @@ function Footer() {
         style={{
           gridAutoFlow: "column",
           gap: "1rem",
+          display: "grid",
+          placeItems: "start",
         }}
         className="grid-flow-col gap-4 dark:text-zinc-800 md:place-self-center md:justify-self-end"
       >

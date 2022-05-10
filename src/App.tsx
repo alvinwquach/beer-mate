@@ -1,7 +1,7 @@
 import { SchemaLink } from "@apollo/client/link/schema";
 import { schema } from "./graphql";
 
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Container, Box, alpha } from "@mui/material";
 
 import RotateLeftIcon from "@mui/icons-material/RotateLeft";
 
@@ -78,6 +78,60 @@ function App() {
             </Button>
             {beerName ? (
               <BeerFetcher beername={beerName} searched={searched} />
+            ) : null}
+            {!searched ? (
+              <>
+                <Container maxWidth="sm">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      height: "65vh",
+                      width: "65vh",
+                      margin: "0 auto",
+                      alignItems: "center",
+                      bgcolor: "background.paper",
+                      overflow: "hidden",
+                      borderRadius: "12px",
+                      boxShadow: 1,
+                      fontWeight: "bold",
+                      backgroundColor: (theme) =>
+                        alpha(theme.palette.primary.main, 0.1),
+                      color: "#fff",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: { xs: "center", md: "center" },
+                        m: 3,
+                        minWidth: { md: 450 },
+                      }}
+                    >
+                      <Box
+                        component="h2"
+                        sx={{
+                          color: "#27272a",
+                          fontSize: 22,
+                        }}
+                      >
+                        Welcome to Brewmate!
+                      </Box>
+                      <Box
+                        component="p"
+                        sx={{
+                          color: "#27272a",
+                          fontSize: 22,
+                        }}
+                      >
+                        Please search for a beer in order to find what food
+                        pairs best! Click on the image of the beer to learn more
+                        about it!
+                      </Box>
+                    </Box>
+                  </Box>
+                </Container>
+              </>
             ) : null}
           </form>
           <Footer />
