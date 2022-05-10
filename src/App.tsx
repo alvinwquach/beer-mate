@@ -90,8 +90,8 @@ function App() {
                   <Box
                     sx={{
                       display: "flex",
-                      height: "65vh",
-                      width: "65vh",
+                      maxHeight: "100%",
+                      maxWidth: "100%",
                       margin: "0 auto",
                       alignItems: "center",
                       bgcolor: "background.paper",

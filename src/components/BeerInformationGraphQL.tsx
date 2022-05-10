@@ -29,42 +29,14 @@ function BeerInformationGraphQL({
 
   return beer ? (
     <>
-      {!searched ? (
-        <Container maxWidth="sm">
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
-              alignItems: "center",
-              bgcolor: "background.paper",
-              overflow: "hidden",
-              borderRadius: "12px",
-              boxShadow: 1,
-              fontWeight: "bold",
-              margin: "1rem",
-              backgroundColor: (theme) =>
-                alpha(theme.palette.primary.main, 0.1),
-              color: "#fff",
-            }}
-          >
-            <Box component="h2">
-              sx=
-              {{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              Welcome to Brewmate!
-            </Box>
-          </Box>
-        </Container>
-      ) : null}
       <Container maxWidth="sm">
         <Box
           sx={{
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
             alignItems: "center",
+            maxHeight: "100%",
+            maxWidth: "100%",
             bgcolor: "background.paper",
             overflow: "hidden",
             borderRadius: "12px",
@@ -82,8 +54,8 @@ function BeerInformationGraphQL({
               sx={{
                 display: "block",
                 margin: "0 auto",
-                height: "12rem",
-                width: "12rem",
+                height: "5rem",
+                width: "5rem",
                 marginTop: "1rem",
               }}
               alt="The image of the beer."
@@ -160,8 +132,8 @@ function BeerInformationGraphQL({
       <Box
         sx={{
           display: "flex",
-          height: "65vh",
-          width: "65vh",
+          maxHeight: "100%",
+          maxWidth: "100%",
           margin: "0 auto",
           alignItems: "center",
           bgcolor: "background.paper",
