@@ -177,8 +177,8 @@ function BeerInformationGraphQL({
           component="p"
           sx={{
             color: "#27272a",
-            fontSize: 22,
-            margin: "0 auto",
+            fontSize: 16,
+            margin: "1rem",
           }}
         >
           That beer does not exist in our database. Please try your search

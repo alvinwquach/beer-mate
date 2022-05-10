@@ -45,7 +45,12 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div className="App">
+      <div
+        style={{
+          backgroundColor: "#fff",
+        }}
+        className="App"
+      >
         <div>
           <Header />
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -121,7 +126,8 @@ function App() {
                         component="p"
                         sx={{
                           color: "#27272a",
-                          fontSize: 22,
+                          fontSize: 16,
+                          margin: "1rem",
                         }}
                       >
                         Please search for a beer in order to find what food
